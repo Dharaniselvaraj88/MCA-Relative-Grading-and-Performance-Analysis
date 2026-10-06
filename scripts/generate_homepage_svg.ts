@@ -1,0 +1,253 @@
+import fs from 'fs';
+import path from 'path';
+
+function generateHomepageSVG() {
+  const width = 1400;
+  const height = 900;
+
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}">
+  <defs>
+    <linearGradient id="headerGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="heroCardGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+    <linearGradient id="btnGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <filter id="btnShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#2563eb" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="${width}" height="${height}" fill="#f1f5f9"/>
+
+  <!-- Subgrid lines background -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+  </pattern>
+  <rect width="${width}" height="${height}" fill="url(#grid)" opacity="0.6"/>
+
+  <!-- HEADER BAR -->
+  <rect x="0" y="0" width="${width}" height="80" fill="url(#headerGrad)"/>
+  <rect x="0" y="77" width="${width}" height="3" fill="#2563eb"/>
+
+  <!-- Header Logo & Title -->
+  <g transform="translate(40, 16)">
+    <!-- Shield Logo -->
+    <path d="M 10 2 C 22 2, 32 10, 32 20 C 32 35, 20 44, 10 48 C 0 44, -12 35, -12 20 C -12 10, -2 2, 10 2 Z" fill="#2563eb" transform="translate(15, 0)"/>
+    <path d="M 10 6 C 18 6, 26 12, 26 20 C 26 31, 17 38, 10 41 C 3 38, -6 31, -6 20 C -6 12, 2 6, 10 6 Z" fill="#ffffff" opacity="0.15" transform="translate(15, 0)"/>
+    <text x="55" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" fill="#ffffff" letter-spacing="0.5">COIMBATORE INSTITUTE OF TECHNOLOGY</text>
+    <text x="55" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="500" fill="#94a3b8">Department of Mathematics — Cognitive Assessment System</text>
+  </g>
+
+  <!-- Header Controls -->
+  <g transform="translate(1080, 24)">
+    <!-- Student Pill -->
+    <rect x="0" y="0" width="120" height="32" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <circle cx="16" cy="16" r="4" fill="#10b981"/>
+    <text x="28" y="20" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#e2e8f0">Student Portal</text>
+
+    <!-- Faculty Link -->
+    <rect x="130" y="0" width="130" height="32" rx="6" fill="#2563eb"/>
+    <text x="195" y="20" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">Faculty Admin</text>
+  </g>
+
+  <!-- MAIN BODY LAYOUT -->
+  <g transform="translate(40, 110)">
+
+    <!-- LEFT COLUMN: HERO COGNITIVE CARD -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="720" height="730" rx="16" fill="url(#heroCardGrad)" filter="url(#cardShadow)"/>
+      <rect x="0" y="0" width="720" height="6" rx="3" fill="#6366f1"/>
+
+      <!-- Accent Decorative Circles -->
+      <circle cx="620" cy="100" r="180" fill="#4f46e5" opacity="0.15"/>
+      <circle cx="100" cy="620" r="140" fill="#3b82f6" opacity="0.12"/>
+
+      <g transform="translate(40, 45)">
+        <!-- Tag Badge -->
+        <rect x="0" y="0" width="185" height="26" rx="13" fill="#312e81" stroke="#4338ca" stroke-width="1"/>
+        <text x="92" y="17" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#818cf8" text-anchor="middle">MSc Integrated Mathematics</text>
+
+        <!-- Main Heading -->
+        <text x="0" y="65" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" fill="#ffffff" letter-spacing="-0.5">Cognitive Capability &amp;</text>
+        <text x="0" y="102" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" fill="#818cf8" letter-spacing="-0.5">Analytical Assessment System</text>
+
+        <text x="0" y="135" font-family="system-ui, sans-serif" font-size="13" fill="#c7d2fe" width="600">
+          Standardized 60-minute evaluation designed to measure mathematical intuition,
+        </text>
+        <text x="0" y="153" font-family="system-ui, sans-serif" font-size="13" fill="#c7d2fe">
+          algorithmic reasoning, verbal inference, working memory, and spatial abstraction.
+        </text>
+
+        <!-- Key Metrics Cards (2x2 Grid) -->
+        <g transform="translate(0, 185)">
+          <!-- Metric 1 -->
+          <rect x="0" y="0" width="310" height="75" rx="10" fill="#1e1b4b" stroke="#3730a3" stroke-width="1"/>
+          <text x="20" y="32" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#38bdf8">50 Questions</text>
+          <text x="20" y="54" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">10 Questions per Cognitive Domain</text>
+
+          <!-- Metric 2 -->
+          <rect x="330" y="0" width="310" height="75" rx="10" fill="#1e1b4b" stroke="#3730a3" stroke-width="1"/>
+          <text x="350" y="32" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#34d399">60 Minutes</text>
+          <text x="350" y="54" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Strict Countdown with Auto-Submit</text>
+
+          <!-- Metric 3 -->
+          <rect x="0" y="90" width="310" height="75" rx="10" fill="#1e1b4b" stroke="#3730a3" stroke-width="1"/>
+          <text x="20" y="122" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#fbbf24">40/30/30 Ratio</text>
+          <text x="20" y="144" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Easy, Moderate, &amp; Hard Question Distribution</text>
+
+          <!-- Metric 4 -->
+          <rect x="330" y="90" width="310" height="75" rx="10" fill="#1e1b4b" stroke="#3730a3" stroke-width="1"/>
+          <text x="350" y="122" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#a78bfa">Auto-Save State</text>
+          <text x="350" y="144" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Responses synced to storage every 30s</text>
+        </g>
+
+        <!-- 5 Cognitive Domains List -->
+        <g transform="translate(0, 375)">
+          <text x="0" y="0" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#a5b4fc" letter-spacing="0.5">EVALUATION DOMAINS</text>
+
+          <g transform="translate(0, 15)">
+            <!-- Domain 1 -->
+            <rect x="0" y="0" width="640" height="42" rx="8" fill="#1e1b4b" opacity="0.8" stroke="#312e81" stroke-width="1"/>
+            <circle cx="20" cy="21" r="6" fill="#38bdf8"/>
+            <text x="36" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#ffffff">1. Applied Calculus &amp; Numerical Reasoning</text>
+
+            <!-- Domain 2 -->
+            <rect x="0" y="50" width="640" height="42" rx="8" fill="#1e1b4b" opacity="0.8" stroke="#312e81" stroke-width="1"/>
+            <circle cx="20" cy="71" r="6" fill="#34d399"/>
+            <text x="36" y="75" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#ffffff">2. Verbal Logic &amp; Statement Inference</text>
+
+            <!-- Domain 3 -->
+            <rect x="0" y="100" width="640" height="42" rx="8" fill="#1e1b4b" opacity="0.8" stroke="#312e81" stroke-width="1"/>
+            <circle cx="20" cy="121" r="6" fill="#fbbf24"/>
+            <text x="36" y="125" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#ffffff">3. Algorithmic Thinking &amp; Complexity</text>
+
+            <!-- Domain 4 -->
+            <rect x="0" y="150" width="640" height="42" rx="8" fill="#1e1b4b" opacity="0.8" stroke="#312e81" stroke-width="1"/>
+            <circle cx="20" cy="171" r="6" fill="#a78bfa"/>
+            <text x="36" y="175" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#ffffff">4. Working Memory &amp; Pattern Retention</text>
+
+            <!-- Domain 5 -->
+            <rect x="0" y="200" width="640" height="42" rx="8" fill="#1e1b4b" opacity="0.8" stroke="#312e81" stroke-width="1"/>
+            <circle cx="20" cy="221" r="6" fill="#f472b6"/>
+            <text x="36" y="225" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#ffffff">5. Abstract Reasoning &amp; Spatial Matrix</text>
+          </g>
+        </g>
+
+      </g>
+    </g>
+
+    <!-- RIGHT COLUMN: STUDENT LOGIN FORM CARD -->
+    <g transform="translate(760, 0)">
+      <rect x="0" y="0" width="560" height="730" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" filter="url(#cardShadow)"/>
+
+      <!-- Top Tab Navigation -->
+      <g transform="translate(30, 30)">
+        <rect x="0" y="0" width="500" height="48" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+        
+        <!-- Active Student Tab -->
+        <rect x="4" y="4" width="242" height="40" rx="6" fill="#2563eb"/>
+        <text x="125" y="29" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Student Onboarding</text>
+
+        <!-- Inactive Faculty Tab -->
+        <text x="375" y="29" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#64748b" text-anchor="middle">Faculty Admin Portal</text>
+      </g>
+
+      <!-- Form Container -->
+      <g transform="translate(30, 105)">
+
+        <text x="0" y="20" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#0f172a">Candidate Authentication</text>
+        <text x="0" y="42" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Please enter your verified academic details to start the assessment.</text>
+
+        <!-- Input Field 1: Candidate Name -->
+        <g transform="translate(0, 65)">
+          <text x="0" y="0" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#334155" letter-spacing="0.5">FULL STUDENT NAME *</text>
+          <rect x="0" y="10" width="500" height="48" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+          <text x="16" y="39" font-family="system-ui, sans-serif" font-size="13" fill="#1e293b">Vaidehi S</text>
+        </g>
+
+        <!-- Input Field 2: Roll Number -->
+        <g transform="translate(0, 150)">
+          <text x="0" y="0" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#334155" letter-spacing="0.5">REGISTER / ROLL NUMBER *</text>
+          <rect x="0" y="10" width="500" height="48" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+          <text x="16" y="39" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#1e293b" letter-spacing="1">22MSR045</text>
+        </g>
+
+        <!-- Input Field 3: Academic Department -->
+        <g transform="translate(0, 235)">
+          <text x="0" y="0" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#334155" letter-spacing="0.5">ACADEMIC DEPARTMENT *</text>
+          <rect x="0" y="10" width="500" height="48" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+          <text x="16" y="39" font-family="system-ui, sans-serif" font-size="13" fill="#1e293b">MSc Data Science (5-Yr Integrated)</text>
+          <!-- Chevron icon -->
+          <path d="M 465 30 L 472 37 L 479 30" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round"/>
+        </g>
+
+        <!-- Input Field 4: Access Passcode -->
+        <g transform="translate(0, 320)">
+          <text x="0" y="0" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#334155" letter-spacing="0.5">STUDENT ACCESS PASSCODE *</text>
+          <rect x="0" y="10" width="500" height="48" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+          <text x="16" y="39" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#2563eb" letter-spacing="1">CIT-2026</text>
+          <text x="410" y="39" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#16a34a">✓ Verified</text>
+        </g>
+
+        <!-- Primary Action Button -->
+        <g transform="translate(0, 415)">
+          <rect x="0" y="0" width="500" height="54" rx="10" fill="url(#btnGrad)" filter="url(#btnShadow)"/>
+          <text x="250" y="33" font-family="system-ui, sans-serif" font-size="15" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">
+            START CANDIDATE ASSESSMENT (60 MINS) →
+          </text>
+        </g>
+
+        <!-- Notice Box -->
+        <g transform="translate(0, 495)">
+          <rect x="0" y="0" width="500" height="75" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+          <text x="16" y="24" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#1d4ed8">ℹ MANDATORY CANDIDATE INSTRUCTIONS</text>
+          <text x="16" y="44" font-family="system-ui, sans-serif" font-size="11" fill="#1e3a8a">
+            Ensure stable network connectivity. Includes a 10-second countdown launch
+          </text>
+          <text x="16" y="60" font-family="system-ui, sans-serif" font-size="11" fill="#1e3a8a">
+            overlay before assessment questions begin.
+          </text>
+        </g>
+
+      </g>
+    </g>
+
+  </g>
+
+  <!-- FOOTER BAR -->
+  <g transform="translate(0, 865)">
+    <rect x="0" y="0" width="${width}" height="35" fill="#0f172a"/>
+    <text x="${width / 2}" y="22" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">
+      Coimbatore Institute of Technology — Department of Mathematics © 2026 | Integrated Cognitive Portal Snapshot
+    </text>
+  </g>
+</svg>`;
+
+  const publicDir = path.join(process.cwd(), 'public');
+  if (!fs.existsSync(publicDir)) {
+    fs.mkdirSync(publicDir, { recursive: true });
+  }
+
+  const publicSvgPath = path.join(publicDir, 'CIT_Cognitive_Portal_Homepage.svg');
+  const rootSvgPath = path.join(process.cwd(), 'CIT_Cognitive_Portal_Homepage.svg');
+
+  fs.writeFileSync(publicSvgPath, svg, 'utf-8');
+  fs.writeFileSync(rootSvgPath, svg, 'utf-8');
+
+  console.log('Successfully generated SVG homepage image:');
+  console.log(' - ' + publicSvgPath);
+  console.log(' - ' + rootSvgPath);
+}
+
+generateHomepageSVG();

@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Clean background -->
+  <rect width="600" height="600" fill="#ffffff" rx="16"/>
+
+  <!-- MATHEMATICAL SYMBOLS CLOUD (BURSTING FROM MIND) -->
+  <g font-family="Cambria, 'Times New Roman', Georgia, serif" font-weight="bold">
+    <!-- Main Centerpiece: Red Sigma -->
+    <text x="250" y="270" font-size="80" fill="#e11d48" text-anchor="middle">∑</text>
+
+    <!-- Black Pi -->
+    <text x="180" y="240" font-size="52" fill="#1e293b" text-anchor="middle">π</text>
+
+    <!-- Green Square Root & Number 4 -->
+    <text x="270" y="110" font-size="54" fill="#16a34a" text-anchor="middle">√4</text>
+
+    <!-- Purple Integral -->
+    <text x="330" y="190" font-size="64" fill="#7c3aed" text-anchor="middle">∫</text>
+
+    <!-- Blue Alpha & Beta -->
+    <text x="190" y="170" font-size="46" fill="#2563eb" text-anchor="middle">α</text>
+    <text x="300" y="140" font-size="48" fill="#1d4ed8" text-anchor="middle">β</text>
+
+    <!-- Dark Red Phi -->
+    <text x="190" y="80" font-size="42" fill="#9f1239" text-anchor="middle">φ</text>
+
+    <!-- Yellow / Orange Symbols -->
+    <text x="360" y="120" font-size="40" fill="#d97706" text-anchor="middle">x</text>
+    <text x="230" y="130" font-size="38" fill="#ca8a04" text-anchor="middle">γ</text>
+
+    <!-- Green Omega -->
+    <text x="380" y="190" font-size="46" fill="#059669" text-anchor="middle">Ω</text>
+
+    <!-- Purple Psi -->
+    <text x="320" y="220" font-size="40" fill="#a855f7" text-anchor="middle">Ψ</text>
+
+    <!-- Red / Purple Numbers -->
+    <text x="110" y="130" font-size="44" fill="#7e22ce" text-anchor="middle">3</text>
+    <text x="100" y="180" font-size="48" fill="#581c87" text-anchor="middle">2</text>
+    <text x="110" y="240" font-size="40" fill="#6b21a8" text-anchor="middle">8</text>
+    <text x="145" y="105" font-size="36" fill="#b91c1c" text-anchor="middle">7</text>
+
+    <!-- Infinity & Percent -->
+    <text x="95" y="210" font-size="36" fill="#1e293b" text-anchor="middle">∞</text>
+    <text x="160" y="215" font-size="36" fill="#0891b2" text-anchor="middle">%</text>
+
+    <!-- Greater than, Divide, Plus, Minus -->
+    <text x="310" y="80" font-size="40" fill="#0284c7" text-anchor="middle">&gt;</text>
+    <text x="245" y="160" font-size="32" fill="#334155" text-anchor="middle">÷</text>
+    <text x="220" y="110" font-size="36" fill="#b91c1c" text-anchor="middle">+</text>
+    <text x="160" y="270" font-size="40" fill="#ea580c" text-anchor="middle">-1</text>
+    <text x="190" y="295" font-size="38" fill="#be123c" text-anchor="middle">#</text>
+
+    <!-- Numbers 5, 0, 9, 6, 1 -->
+    <text x="325" y="160" font-size="32" fill="#1e293b" text-anchor="middle">5</text>
+    <text x="350" y="270" font-size="42" fill="#1e293b" text-anchor="middle">0</text>
+    <text x="330" y="300" font-size="34" fill="#7c3aed" text-anchor="middle">9</text>
+    <text x="310" y="280" font-size="28" fill="#d97706" text-anchor="middle">6</text>
+    <text x="260" y="200" font-size="32" fill="#1e293b" text-anchor="middle">1</text>
+
+    <!-- Brackets & Operators -->
+    <text x="140" y="80" font-size="44" fill="#1e293b" text-anchor="middle">[</text>
+    <text x="130" y="160" font-size="40" fill="#db2777" text-anchor="middle">{</text>
+    <text x="350" y="170" font-size="36" fill="#1e293b" text-anchor="middle">)</text>
+    <text x="380" y="220" font-size="32" fill="#991b1b" text-anchor="middle">^</text>
+    <text x="390" y="240" font-size="36" fill="#991b1b" text-anchor="middle">}</text>
+    <text x="350" y="225" font-size="36" fill="#ca8a04" text-anchor="middle">||</text>
+  </g>
+
+  <!-- HUMAN HEAD PROFILE SILHOUETTE (BLACK) WITH OPEN TOP -->
+  <g fill="#0f172a" filter="url(#softGlow)">
+    <!-- Base Head & Neck Profile -->
+    <!-- Facing Left -->
+    <path d="
+      M 310,328
+      L 150,328
+      C 142,328 135,335 135,343
+      C 135,360 145,390 155,420
+      C 158,430 155,440 140,455
+      C 125,470 110,480 110,490
+      C 118,505 130,520 145,530
+      C 165,542 190,555 220,560
+      C 230,562 235,570 235,580
+      L 345,580
+      L 345,350
+      C 345,338 335,328 320,328
+      Z"
+    />
+
+    <!-- Hinged Lid (Top of Head Opened Rightward) -->
+    <path d="
+      M 320,328
+      L 485,185
+      C 492,178 500,185 495,193
+      C 460,240 405,295 330,328
+      Z"
+    />
+  </g>
+</svg>

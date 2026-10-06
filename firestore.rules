@@ -1,0 +1,72 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Connectivity test probe
+    match /test/{document=**} {
+      allow read: if true;
+    }
+
+    // Submissions: Students submit test results; Admin/Faculty read all student submissions
+    match /submissions/{submissionId} {
+      allow read, write: if true;
+    }
+
+    match /assessmentSubmissions/{submissionId} {
+      allow read, write: if true;
+    }
+
+    // Student logins / attendance auditing
+    match /studentLogins/{registerNo} {
+      allow read, write: if true;
+    }
+
+    // Active Student Sessions: Enforces unique Register Number & blocks concurrent logins
+    match /activeSessions/{registerNo} {
+      allow read, write: if true;
+    }
+
+    match /activeStudentSessions/{registerNo} {
+      allow read, write: if true;
+    }
+
+    // Savepoints during active test
+    match /assessmentSavepoints/{registerNo} {
+      allow read, write: if true;
+    }
+
+    // Global Portal Settings: Login Locks, Access PINs, Locked Reg Nos
+    match /settings/{document=**} {
+      allow read, write: if true;
+    }
+
+    // Custom Question Bank
+    match /questionBank/{document=**} {
+      allow read, write: if true;
+    }
+
+    // Real-time security incident logs & anti-misbehavior alerts
+    match /securityLogs/{document=**} {
+      allow read, write: if true;
+    }
+
+    // Student assessment experience and application usability feedback
+    match /studentFeedback/{document=**} {
+      allow read, write: if true;
+    }
+
+    // Assessment Tests & Candidate Allocations
+    match /tests/{testId} {
+      allow read, write: if true;
+    }
+
+    match /assessment_tests/{testId} {
+      allow read, write: if true;
+    }
+  }
+}

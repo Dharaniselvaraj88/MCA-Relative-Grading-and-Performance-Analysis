@@ -1,0 +1,8 @@
+{
+  "name": "Remix CIT Cognitive Assessment System",
+  "description": "Mathematics Competency Assessment Platform for the students of B.E. / B. Tech. Programmes Coimbatore Institute of Technology featuring Limits & Continuity, Matrices & Determinants, Differentiation, Probability & Statistics, Integration with automated cognitive profile reports, faculty security unlock, and PDF/Excel exports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

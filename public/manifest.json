@@ -1,0 +1,85 @@
+{
+  "id": "/",
+  "name": "Remix CIT Cognitive Assessment System",
+  "short_name": "CIT Assess",
+  "description": "Mathematics Competency Assessment Platform for B.E. / B.Tech Programmes, Coimbatore Institute of Technology.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#1e3a8a",
+  "background_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/icon-portal.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/cit_logo.svg",
+      "sizes": "300x300",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-student.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-faculty.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-admin.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Student Assessment Portal",
+      "short_name": "Student",
+      "description": "Direct student cognitive assessment test login and evaluation",
+      "url": "/?role=student",
+      "icons": [
+        {
+          "src": "/icon-student.svg",
+          "sizes": "512x512",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Staff & Faculty Evaluation Portal",
+      "short_name": "Staff/Faculty",
+      "description": "Faculty valuation, review, student security unlock, and report access",
+      "url": "/?role=faculty",
+      "icons": [
+        {
+          "src": "/icon-faculty.svg",
+          "sizes": "512x512",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Admin Examination Portal",
+      "short_name": "Admin",
+      "description": "Institutional exam control, timing, roster management, and security audits",
+      "url": "/?role=admin",
+      "icons": [
+        {
+          "src": "/icon-admin.svg",
+          "sizes": "512x512",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ]
+}

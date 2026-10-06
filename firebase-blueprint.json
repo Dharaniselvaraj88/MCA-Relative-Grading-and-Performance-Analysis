@@ -1,0 +1,178 @@
+{
+  "entities": {
+    "Submission": {
+      "title": "Submission",
+      "description": "Assessment submission record for a student",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique submission ID"
+        },
+        "student": {
+          "type": "object",
+          "description": "Student details including name, regNo, dept"
+        },
+        "submittedAt": {
+          "type": "string",
+          "description": "Display string of submission time"
+        },
+        "report": {
+          "type": "object",
+          "description": "Cognitive profile evaluation result"
+        },
+        "isLockedOut": {
+          "type": "boolean",
+          "description": "True if terminated due to window switch or manual lockout"
+        },
+        "securityViolation": {
+          "type": "object",
+          "description": "Violation details"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp for sorting"
+        }
+      },
+      "required": ["id", "student", "submittedAt", "report"]
+    },
+    "GlobalSettings": {
+      "title": "GlobalSettings",
+      "description": "Global portal control parameters including PINs and lockout statuses",
+      "type": "object",
+      "properties": {
+        "isStudentLoginLocked": {
+          "type": "boolean"
+        },
+        "isFacultyLoginLocked": {
+          "type": "boolean"
+        },
+        "lockedStudentRegNos": {
+          "type": "array"
+        },
+        "studentAccessPin": {
+          "type": "string"
+        },
+        "facultyAccessPin": {
+          "type": "string"
+        },
+        "adminAccessPin": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "QuestionBank": {
+      "title": "QuestionBank",
+      "description": "Active uploaded custom question bank",
+      "type": "object",
+      "properties": {
+        "questions": {
+          "type": "array"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      }
+    },
+    "SecurityLog": {
+      "title": "SecurityLog",
+      "description": "Security incident and anti-misbehavior log record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "eventType": { "type": "string" },
+        "severity": { "type": "string" },
+        "details": { "type": "string" },
+        "userRegNo": { "type": "string" },
+        "userName": { "type": "string" },
+        "userRole": { "type": "string" },
+        "ipOrDevice": { "type": "string" },
+        "resolved": { "type": "boolean" }
+      },
+      "required": ["id", "timestamp", "eventType", "severity", "details"]
+    },
+    "AppExperienceFeedback": {
+      "title": "AppExperienceFeedback",
+      "description": "Student assessment and application user-friendliness feedback",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "studentRegNo": { "type": "string" },
+        "studentName": { "type": "string" },
+        "department": { "type": "string" },
+        "submittedAt": { "type": "string" },
+        "assessmentRating": { "type": "number" },
+        "userFriendlinessRating": { "type": "number" },
+        "questionClarityRating": { "type": "number" },
+        "navEaseRating": { "type": "number" },
+        "comments": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["studentRegNo", "studentName", "department", "comments"]
+    },
+    "ActiveSession": {
+      "title": "ActiveSession",
+      "description": "Real-time active student assessment session to prevent concurrent logins",
+      "type": "object",
+      "properties": {
+        "registerNo": { "type": "string" },
+        "studentName": { "type": "string" },
+        "department": { "type": "string" },
+        "sessionId": { "type": "string" },
+        "loginTimestamp": { "type": "number" },
+        "lastHeartbeat": { "type": "number" },
+        "deviceInfo": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["registerNo", "sessionId", "loginTimestamp", "lastHeartbeat"]
+    }
+  },
+  "firestore": {
+    "/submissions/{submissionId}": {
+      "schema": {
+        "$ref": "#/entities/Submission"
+      },
+      "description": "Collection of student assessment submissions"
+    },
+    "/activeSessions/{registerNo}": {
+      "schema": {
+        "$ref": "#/entities/ActiveSession"
+      },
+      "description": "Active student sessions keyed by unique Register Number to prevent concurrent logins"
+    },
+    "/settings/global": {
+      "schema": {
+        "$ref": "#/entities/GlobalSettings"
+      },
+      "description": "Document containing global admin settings, PINs, and login lock statuses"
+    },
+    "/questionBank/custom": {
+      "schema": {
+        "$ref": "#/entities/QuestionBank"
+      },
+      "description": "Document containing custom uploaded question bank"
+    },
+    "/securityLogs/{logId}": {
+      "schema": {
+        "$ref": "#/entities/SecurityLog"
+      },
+      "description": "Real-time misbehavior and security event incident logs for Admin monitoring"
+    },
+    "/studentFeedback/{feedbackId}": {
+      "schema": {
+        "$ref": "#/entities/AppExperienceFeedback"
+      },
+      "description": "Student feedback records for assessment experience and UI evaluation"
+    },
+    "/tests/{testId}": {
+      "schema": {
+        "$ref": "#/entities/AssessmentTest"
+      },
+      "description": "Configured assessment tests with domains, levels, and enrolled students"
+    }
+  }
+}

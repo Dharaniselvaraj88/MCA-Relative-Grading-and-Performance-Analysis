@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+html {
+  font-size: 17.5px;
+}
+
+body {
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+input, select, textarea, button {
+  font-size: 0.95rem;
+}
+
+@layer utilities {
+  .break-inside-avoid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .break-after-avoid {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+
+  /* Hide sticky site navigation header, footers, interactive controls, and buttons during printing */
+  header,
+  nav,
+  footer,
+  button, 
+  input, 
+  select,
+  textarea,
+  #live-assessment-container,
+  .no-print,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Remove security screen masking during printing of reports */
+  .security-protected {
+    -webkit-user-select: text !important;
+    user-select: text !important;
+  }
+
+  /* Ensure background is clean white and text is dark slate for crisp printing */
+  body, #root, main, div, section, article {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    box-shadow: none !important;
+  }
+
+  /* Allow modal popups to fill full printed page when printing reports in modals */
+  .fixed.inset-0 {
+    position: static !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Ensure cards, panels, and borders render cleanly */
+  .border, 
+  .rounded-xl, 
+  .rounded-2xl, 
+  .shadow-md, 
+  .shadow-lg,
+  .shadow-2xl,
+  .shadow-sm, 
+  .shadow-2xs,
+  .break-inside-avoid {
+    box-shadow: none !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Prevent headings from orphaning at the bottom of a printed page */
+  h1, h2, h3, h4, h5, h6 {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  /* Recharts & SVG elements alignment */
+  .recharts-responsive-container,
+  .recharts-wrapper,
+  svg {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Table formatting for print */
+  table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+  }
+
+  tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  th, td {
+    padding: 6px 8px !important;
+  }
+}
